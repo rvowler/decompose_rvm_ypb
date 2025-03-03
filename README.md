@@ -1,4 +1,11 @@
 # decompose_rvm_ypb
-# Fichero README.md
-Descargar la carpeta Flask y Developer con todos sus archivos.
-Descargar el fichero Docker-compose.yaml y también lo que viene a ser la ejecución con el comando, eh, bueno, su, si sisisi, y este comando: **docker-compose up -d --build**.
+
+# Para empezar
+Crear carpeta para ir colocando los archivos.
+
+# Pasos a seguir
+
+1- Descargar el fichero Docker-compose.yaml y app.py
+2- Descargar la carpeta Flask y Developer con todos sus archivos.
+3- Ejecución del siguiente comando:
+   **docker-compose up -d --build**.
