@@ -1,0 +1,51 @@
+version: '3.8'
+
+services:
+  flask:
+    build: ./flask
+    volumes:
+      - document_root:/app
+    ports:
+      - "5000:5000"
+      - "2222:22"
+    networks:
+      - dev
+    depends_on:
+      - postgres
+    environment:
+      POSTGRES_HOST: postgres
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: mydb
+
+  postgres:
+    image: postgres:13
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: mydb
+    volumes:
+      - dbdata:/var/lib/postgresql/data
+    networks:
+      - dev
+
+  developer:
+    build: ./developer
+    volumes:
+      - document_root:/workspace
+    ports:
+      - "5901:5901"
+      - "2223:22"
+    networks:
+      - dev
+    depends_on:
+      - postgres
+      - flask
+
+volumes:
+  dbdata:
+  document_root:
+
+networks:
+  dev:
+    driver: bridge
